@@ -21,6 +21,7 @@ async function getData(url) {
 
 async function getUserInput() {
     const domElement = document.getElementById("content");
+    domElement.innerHTML = '';
     const firstname = document.getElementById("fname").value;
     const lastname = document.getElementById("lname").value;
     let name = ''
@@ -31,12 +32,67 @@ async function getUserInput() {
     }
     const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
     console.log(players);
-    for (let i = 0; i < players.length; i++) {
-        const div = document.createElement("li");
-        const p = document.createElement("p")
-        p.innerHTML = player.strPlayer
-        p.append(div)
-        div.append(domElement);
-      }
+      players.player.forEach((player) => {
+        //DIV
+        const div = document.createElement("div");
+        div.className = "border center row"
 
+        //LEFTDIV
+        const leftDiv = document.createElement("div");
+        leftDiv.className = "column"
+        div.append(leftDiv);
+
+        //RIGHTDIV
+        const rightDiv = document.createElement("div");
+        rightDiv.className = "column"
+        div.append(rightDiv);
+        
+        //H1
+        const h1 = document.createElement("h1");
+        h1.innerHTML = `${player.strPlayer}`;
+        leftDiv.append(h1);
+        //IMG
+        const img = document.createElement("img");
+        img.src = player.strThumb;
+        img.className = "image";
+        img.alt = "geen afbeelding beschikbaar"
+        leftDiv.append(img);
+
+        //H1
+        const h1_2 = document.createElement("h1");
+        h1_2.innerHTML = "eigenschappen";
+        rightDiv.append(h1_2);
+
+        //Table
+        const table = document.createElement("table");
+        rightDiv.append(table);
+
+        makeTableRow('Sport:', player.strSport, table)
+        makeTableRow('Lengte:', player.strHeight, table)
+        makeTableRow('Rugnummer:', player.strNumber, table)
+        makeTableRow('voorkeursvoet:', player.strSide, table)
+        makeTableRow('Land:', player.strNationality, table)
+        makeTableRow('Positie:', player.strPosition, table)
+        makeTableRow('Team:', player.strTeam, table)
+
+        domElement.append(div);
+        
+        //BR
+        const br = document.createElement("br");
+        domElement.append(br);
+      });
+}
+
+function makeTableRow(attribute, data, append) {
+    //tr
+    const tr = document.createElement("tr");
+    append.append(tr);
+    //td1
+    const td1 = document.createElement("td");
+    td1.innerHTML = attribute;
+    tr.append(td1);
+    //td2
+    const td2 = document.createElement("td");
+    td2.innerHTML = data;
+    tr.append(td2);
 }
