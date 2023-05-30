@@ -89,7 +89,7 @@ async function getUserInput() {
 
     //H1
     const h1 = document.createElement("h1");
-    h1.innerHTML = "We hebben helaas geen matchende spelers kunnen vinden<br> Probeer gerust om een ander speler te zoeken";
+    h1.innerHTML = "We hebben helaas geen matchende sporter kunnen vinden<br> Probeer gerust om een ander sporter te zoeken";
     div.append(h1);
   }
 }
