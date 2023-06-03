@@ -1,12 +1,5 @@
 /**
- * Example 3
- * Get data from https://swapi.dev/api/people/1/ using Async Await
- */
-
-console.log("JavaScript is working!");
-
-/**
- * Async function to get the data from the api
+ * Async function to get the data from the theSportDB api
  * @returns - returns a promise
  */
 async function getData(url) {
@@ -30,7 +23,7 @@ async function getUserInput() {
   } else {
     name = `${firstname}`
   }
-  
+
   const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
   if (players.player !== null) {
     players.player.forEach((player) => {
