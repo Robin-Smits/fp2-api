@@ -12,8 +12,8 @@ console.log("JavaScript is working!");
 async function getData(url) {
   try {
     let response = await fetch(url);
-    let character = await response.json();
-    return character;
+    let sporter = await response.json();
+    return sporter;
   } catch (err) {
     console.error("Error: ", err);
   }
@@ -30,6 +30,7 @@ async function getUserInput() {
   } else {
     name = `${firstname}`
   }
+  
   const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
   if (players.player !== null) {
     players.player.forEach((player) => {
