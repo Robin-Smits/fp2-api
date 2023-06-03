@@ -1,5 +1,6 @@
 /**
- * Async function to get the data from the theSportDB api
+ * Async function to get the data from the given URL
+ * @param {*} url link to the api you want to use
  * @returns - returns a promise
  */
 async function getData(url) {
@@ -16,8 +17,8 @@ async function getData(url) {
  * Gets the input from the user out of the searchbar, sends the request to the api & uses the applyData function to display it
  */
 async function getUserInput() {
-  const firstname = document.getElementById("fname").value;
-  const lastname = document.getElementById("lname").value;
+  const firstname = document.getElementById("fname").value.trim();
+  const lastname = document.getElementById("lname").value.trim();
   let name = ''
   if (lastname !== '') {
     name = `${firstname}%20${lastname}`;
