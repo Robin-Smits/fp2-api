@@ -11,8 +11,9 @@ async function getData(url) {
     console.error("Error: ", err);
   }
 }
+
 /**
- * Gets the input from the user out of the searchbar & uses it to display the output from the api
+ * Gets the input from the user out of the searchbar, sends the request to the api & uses the applyData function to display it
  */
 async function getUserInput() {
   const firstname = document.getElementById("fname").value;
