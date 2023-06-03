@@ -11,10 +11,10 @@ async function getData(url) {
     console.error("Error: ", err);
   }
 }
-
+/**
+ * Gets the input from the user out of the searchbar & uses it to display the output from the api
+ */
 async function getUserInput() {
-  const domElement = document.getElementById("content");
-  domElement.innerHTML = '';
   const firstname = document.getElementById("fname").value;
   const lastname = document.getElementById("lname").value;
   let name = ''
@@ -25,6 +25,17 @@ async function getUserInput() {
   }
 
   const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
+  applyData(players)
+}
+
+/**
+ * Funtion that uses te recieved data to display it on the page
+ * @param {*} players data to display
+ */
+function applyData(players) {
+  const domElement = document.getElementById("content");
+  domElement.innerHTML = '';
+
   if (players.player !== null) {
     players.player.forEach((player) => {
       //DIV
@@ -87,7 +98,12 @@ async function getUserInput() {
     div.append(h1);
   }
 }
-
+/**
+ * Funtion helps build a table with info and a value
+ * @param {*} attribute statistic name you want to display
+ * @param {*} data statistic value you want to display
+ * @param {*} append the item where it needs to append to
+ */
 function makeTableRow(attribute, data, append) {
   //tr
   const tr = document.createElement("tr");
