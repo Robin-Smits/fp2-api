@@ -29,7 +29,7 @@ async function getUserInput() {
 
     //H1
     const h1 = document.createElement("h1");
-    h1.innerHTML = "U heeft geen naam van een sporter in gevult, vul eerst een naam in voordat u probeert te zoeken";
+    h1.innerHTML = "U heeft geen naam van een sporter in gevult, vul een naam om naar te zoeken";
     div.append(h1);
   } else {
     let name = ''
