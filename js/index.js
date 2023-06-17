@@ -12,8 +12,6 @@ async function getData(url) {
     console.error("Error: ", err);
   }
 }
-const result = getData('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4328&s=2022-2023')
-console.log(result)
 
 /**
  * Gets the input from the user out of the searchbar, sends the request to the api & uses the applyData function to display it
