@@ -40,6 +40,7 @@ async function getUserInput() {
     }
   
     const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
+    console.log(players)
     applyData(players)
   }
 }
