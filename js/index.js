@@ -12,6 +12,8 @@ async function getData(url) {
     console.error("Error: ", err);
   }
 }
+const result = getData('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4328&s=2022-2023')
+console.log(result)
 
 /**
  * Gets the input from the user out of the searchbar, sends the request to the api & uses the applyData function to display it
@@ -19,15 +21,30 @@ async function getData(url) {
 async function getUserInput() {
   const firstname = document.getElementById("fname").value.trim();
   const lastname = document.getElementById("lname").value.trim();
-  let name = ''
-  if (lastname !== '') {
-    name = `${firstname}%20${lastname}`;
-  } else {
-    name = `${firstname}`
-  }
+  console.log(firstname, lastname)
+  if (firstname == '' & lastname == '') {
+    const domElement = document.getElementById("content");
+    domElement.innerHTML = '';
+    //DIV
+    const div = document.createElement("div");
+    div.className = "border center row"
+    domElement.append(div);
 
-  const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
-  applyData(players)
+    //H1
+    const h1 = document.createElement("h1");
+    h1.innerHTML = "U heeft geen naam van een sporter in gevult, vul eerst een naam in voordat u probeert te zoeken";
+    div.append(h1);
+  } else {
+    let name = ''
+    if (lastname !== '') {
+      name = `${firstname}%20${lastname}`;
+    } else {
+      name = `${firstname}`
+    }
+  
+    const players = await getData(`https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${name}`);
+    applyData(players)
+  }
 }
 
 /**
