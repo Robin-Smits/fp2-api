@@ -19,7 +19,6 @@ async function getData(url) {
 async function getUserInput() {
   const firstname = document.getElementById("fname").value.trim();
   const lastname = document.getElementById("lname").value.trim();
-  console.log(firstname, lastname)
   if (firstname == '' & lastname == '') {
     const domElement = document.getElementById("content");
     domElement.innerHTML = '';
